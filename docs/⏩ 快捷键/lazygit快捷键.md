@@ -1,0 +1,25 @@
+# Congratulations!
+- 移动：
+	- h：往上移动一个区域
+	- l：往下移动一个区域
+	- j: 在区域内向下移动一行
+	- k：在区域内向上移动一行
+- Files 区域：
+	- a: 将所有文件添加/取消暂存 =>git add .
+	- c:将暂存区内的内容提交 => git commit
+	- space 空格键：将选中的文件添加/取消暂存
+	- Enter：查看选中文件的unstaged和staged文件状态
+	- unstage/staged区域：
+		- a: 全选
+		- space 空格键：将选中行添加/取消暂存
+		- c: 将暂存区内的内容提交 => git commit
+		- v + j/k: 向上/向下选中多行
+- branch区域
+	- c：基于当前分支切换/创建至其他分支
+	- space空格键：选中某个分支，并切换至该分支
+- commit 区域：
+	- rebase操作：
+		- e：选中一个commit节点，开始rebase => git rebase -i xxxx
+		- s: 移动到其他commit上，按下s，进行squash 压缩
+		- f：移动到其他commit上，按下f，进行 fixup 修复
+		- d: 移动到其他commit上，按下d，进行 fixup 修复
