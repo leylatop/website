@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用ffmpeg 将MP4转为gif</title>
+</head>
+<body>
+  input: <input type="file" id="file" accept="video/mp4" />
+  <button id="convert">convert</button>
+  <div id="output"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ffmpeg/0.12.10/umd/ffmpeg.min.js"></script>
+  <script>
+    const file = document.getElementById('file');
+    const convert = document.getElementById('convert');
+    const output = document.getElementById('output');
+    convert.onclick = async () => {
+      const ffmpeg = createFFmpeg({ log: true });
+      await ffmpeg.load();
+      const data = await fetch(file.files[0].name).then(res => res.arrayBuffer());
+      ffmpeg.FS('writeFile', file.files[0].name, new Uint8Array(data));
+      await ffmpeg.run('-i', file.files[0].name, 'output.gif');
+      const result = ffmpeg.FS('readFile', 'output.gif');
+      const url = URL.createObjectURL(new Blob([result.buffer], { type: 'image/gif' }));
+      output.innerHTML = `<img src="${url}" />`;
+    };
+  </script>
+</body>
+</html>

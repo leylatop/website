@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+  <title>公证收费计算器</title>
+</head>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+  }
+
+  h1 {
+    text-align: center;
+  }
+  .section-part {
+    margin: 40px auto;
+    width: 90%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .section-part-1 {
+    border: solid red 1px;
+  }
+
+  .section-part-2 {
+    border: solid green 1px;
+  }
+
+  .section-part-3 {
+    border: solid blue 1px;
+  }
+
+
+  .title {
+    color: red;
+    margin-bottom: 8px;
+  }
+
+  .business-money, .receivable-money {
+    display: flex;
+    align-items: center;
+  }
+  .money-desc {
+    margin-right: 10px;
+  }
+
+  .input, .total {
+    flex: 1;
+    display: block;
+    margin: 20px auto;
+    height: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  .total {
+    border: solid 1px #333;
+    display: flex;
+    align-items: center;
+  }
+
+  .desc-method {
+    list-style: none;
+    color: gray;
+  }
+
+  .btn-group {
+    display: flex;
+    align-items: center;
+    margin-left: 70px;
+  }
+  .confirm-btn, .clear-btn {
+    height: 36px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .clear-btn {
+    margin-left: 20px;
+  }
+  
+
+  @media (min-width: 750px) {
+    .section-part {
+      width: 60%;
+      padding: 20px;
+    }
+
+    .input, .total {
+      height: 66px;
+    }
+  }
+</style>
+
+<body>
+  <h1>公证收费计算器</h1>
+  <section class="section-part section-part-1">
+    <h2 class="title">标准一 ——合同协议收费标准</h2>
+    <div class="desc">
+      <div>规则描述：</div>
+      <div>1. 0-50w部分（0.15%）</div>
+      <div>2. 50w-500w部分（0.1%）</div>
+      <div>3. 500w-5000w 部分（0.05%）</div>
+      <div>4. 5000w-10000w部分（0.01%）</div>
+      <div>5. 10000w以上部分(0.005%)</div>
+    </div>
+    <div class="business-money">
+      <div class="money-desc">业务金额</div>
+      <input class="input" id="b1-input" type="text" value="" placeholder="请输入业务金额后 敲Enter键">
+    </div>
+    <div class="receivable-money">
+      <div class="money-desc">应收金额</div>
+      <div class="total" id="b1-total"></div>
+    </div>
+    <div class="btn-group">
+      <button class="confirm-btn" id="b1-confirm-btn">重新计算</button>
+      <button class="clear-btn" id="b1-clear-btn">一键清空</button>
+    </div>
+  </section>
+
+  <section class="section-part section-part-2">
+    <h2 class="title">标准二 ——财产继承/赠与收费标准</h2>
+    <div class="desc">
+      <div>规则描述：</div>
+      <div>1. 0-20w部分（0.5%）</div>
+      <div>2. 20w-50w部分（0.4%）</div>
+      <div>3. 50w-200w 部分（0.3%）</div>
+      <div>4. 200w-500w部分（0.2%）</div>
+      <div>5. 500w-1000w部分（0.1%）</div>
+      <div>6. 1000w以上部分(0.05%)</div>
+    </div>
+    <div class="business-money">
+      <div class="money-desc">业务金额</div>
+      <input class="input" id="b2-input" type="text" value="" placeholder="请输入业务金额后 敲Enter键">
+    </div>
+    <div class="receivable-money">
+      <div class="money-desc">应收金额</div>
+      <div class="total" id="b2-total"></div>
+    </div>
+    <div class="btn-group">
+      <button class="confirm-btn" id="b2-confirm-btn">重新计算</button>
+      <button class="clear-btn" id="b2-clear-btn">一键清空</button>
+    </div>
+  </section>
+
+  <section class="section-part section-part-3">
+    <h2 class="title">标准三 ——万6.5收费标准</h2>
+    <div class="desc">
+      <div>规则描述：</div>
+      <div>一万元收6.5元</div>
+    </div>
+    <div class="business-money">
+      <div class="money-desc">业务金额</div>
+      <input class="input" id="b3-input" type="text" value="" placeholder="请输入业务金额后 敲Enter键">
+    </div>
+    <div class="receivable-money">
+      <div class="money-desc">应收金额</div>
+      <div class="total" id="b3-total"></div>
+    </div>
+    <div class="btn-group">
+      <button class="confirm-btn" id="b3-confirm-btn">重新计算</button>
+      <button class="clear-btn" id="b3-clear-btn">一键清空</button>
+    </div>
+  </section>
+  
+  <section class="section-part">
+    <ul class="desc-method">
+      <ul>使用方法描述：</ul>
+      <li>1. 找到对应收费标准；</li>
+      <li>2. 在“业务金额” 输入当次业务金额；</li>
+      <li>3. 敲回车/Enter键获取 “应收金额”；</li>
+      <li>4. 点击计算/清空可以重新计算or清空金额；</li>
+    </ul>
+  </section>
+  
+</body>
+<script>
+  // 当前数字是否大于num1，小于等于num2
+  Number.prototype.isInclude = function (num1, num2) {
+    console.log(this);
+    console.log(num1 < this && this <= num2);
+    return num1 < this && this <= num2
+  }
+
+  function getComma(a) {
+    if (isNaN(parseFloat(a))) {
+      //另千分符金额框为空
+      return '请输入正确格式的数字'
+    } else { //是数字，将数字保留两位小数赋给真实金额框
+      var a = new Number(a); //转换为数字类型
+      var b = a.toFixed(2); //保留两位小数
+      var c = b.replace(/(\d)(?=(\d{3})+(\.|$))/g, '$1,'); //使用正则替换，每隔三个数加一',' 
+      return c
+    }
+  }
+
+  const data = {
+    /**
+     * 1. 0-50w部分（0.15%）
+     * 2. 50w-500w部分（0.1%）
+     * 3. 500w-5000w 部分（0.05%）
+     * 4. 5000w-10000w部分（0.01%）
+     * 5. 10000w以上部分(0.005%)
+     */
+    'type1': [
+      { id: 0, startValue: 0, endValue: 500000, rate: 0.15 },
+      { id: 1, endValue: 5000000, rate: 0.1},
+      { id: 2, endValue: 50000000, rate: 0.05},
+      { id: 3, endValue: 100000000, rate: 0.01},
+      { id: 4, rate: 0.005}
+    ],
+    /**
+    * 1. 0-20w部分（0.5%）
+    * 2. 20w-50w部分（0.4%）
+    * 3. 50w-200w 部分（0.3%）
+    * 4. 200w-500w部分（0.2%）
+    * 5. 500w-1000w部分（0.1%）
+    * 6. 1000w以上部分(0.05%)
+    */ 
+    'type2': [
+      { id: 0, startValue: 0, endValue: 200000, rate: 0.5 },
+      { id: 1, endValue: 500000, rate: 0.4},
+      { id: 2, endValue: 2000000, rate: 0.3},
+      { id: 3, endValue: 5000000, rate: 0.2},
+      { id: 4, endValue: 10000000, rate: 0.1},
+      { id: 5, rate: 0.05}
+    ],
+    // 万 6.5
+    'type3': [
+      { id: 0, rate: 6.5 }
+    ]
+  }
+
+  function calculate(type, number) {
+    if (number <= 0) {
+      return 0;
+    }
+    if(type === 'type3') {
+      return number / 10000 * data[type][0]['rate']
+    }
+    const list = data[type]
+    let money
+    for (let l of list) {
+      let { startValue, endValue, id, rate } = l
+      if(startValue !== 0 && !startValue) {
+        startValue = list[id - 1]['endValue']
+      }
+      if(!endValue) {
+        endValue = Infinity
+      }
+      if(number.isInclude(startValue, endValue)) {
+        money = (number - startValue) * rate / 100 + calculate(type, startValue)
+        break
+      }
+    }
+    return money
+  }
+
+  function onChange (type, originId, targetId) {
+    const number = Number(document.getElementById(originId).value)
+    const total = calculate(type, number)
+    document.getElementById(targetId).innerHTML = getComma(total)
+  }
+
+  function onClear(originId, targetId) {
+    document.getElementById(originId).value = ''
+    document.getElementById(targetId).innerHTML = ''
+  }
+
+  function onClick(type, originId, targetId) {
+    onChange(type, originId, targetId)
+  }
+  const eleKey = [
+    { id: 0, type: 'type1', originId: 'b1-input', targetId: 'b1-total', confirmId: 'b1-confirm-btn', clearId: 'b1-clear-btn' },
+    { id: 1, type: 'type2', originId: 'b2-input', targetId: 'b2-total', confirmId: 'b2-confirm-btn', clearId: 'b2-clear-btn' },
+    { id: 2, type: 'type3', originId: 'b3-input', targetId: 'b3-total', confirmId: 'b3-confirm-btn', clearId: 'b3-clear-btn' },
+  ]
+  for(let key of eleKey) {
+    const { type, originId, targetId, confirmId, clearId } = key
+    document.getElementById(originId).onchange = function () {
+      onChange(type, originId, targetId)
+    }
+    document.getElementById(confirmId).onclick = function () {
+      onClick(type, originId, targetId)
+    }
+    document.getElementById(clearId).onclick = function () {
+      onClear(originId, targetId)
+    }
+  }
+</script>
+
+</html>

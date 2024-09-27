@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>进制转换器</title>
+  <style>
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+
+    .desc-title {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .input-number {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .output {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    hr {
+      margin-top: 20px;
+    }
+
+    h2 {
+      margin-top: 20px;
+    }
+
+    .result {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .copy {
+      padding: 5px 10px;
+      font-size: 14px;
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .d-flex {
+      display: flex;
+      align-items: center;
+    }
+
+    .binary-select {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>计算机进制转换器</h1>
+    <p>进制转换器是一个可以将数字在二进制、八进制、十进制和十六进制之间相互转换的工具。</p>
+    <div>
+      <h2>输入</h2>
+      <div class="desc-title">请输入一个数字：</div>
+      <input type="text" id="num" class="input-number">
+      <div class="desc-title">设置输入数字的进制：</div>
+      <div class="binary-select">
+        <div class="d-flex">
+          <label for="bin">二进制</label>
+          <input type="radio" name="from" value="bin" checked>
+        </div>
+        <div class="d-flex">
+          <label for="oct">八进制</label>
+          <input type="radio" name="from" value="oct">
+        </div>
+        <div class="d-flex">
+          <label for="dec">十进制</label>
+          <input type="radio" name="from" value="dec">
+        </div>
+        <div class="d-flex">
+          <label for="hex">十六进制</label>
+          <input type="radio" name="from" value="hex">
+        </div>
+      </div>
+      <br>
+      <button id="submit" class="output">转换</button>
+      <hr>
+      <h2>转换结果</h2>
+      <p>二进制：<span id="bin" class="result"></span><button class="copy">复制</button></p>
+      <p>八进制：<span id="oct" class="result"></span><button class="copy">复制</button></p>
+      <p>十进制：<span id="dec" class="result"></span><button class="copy">复制</button></p>
+      <p>十六进制：<span id="hex" class="result"></span><button class="copy">复制</button></p>
+    </div>
+  </div>
+  <script>
+    const num = document.getElementById('num');
+    const bin = document.getElementById('bin');
+    const oct = document.getElementById('oct');
+    const dec = document.getElementById('dec');
+    const hex = document.getElementById('hex');
+    const submit = document.getElementById('submit');
+    const copyBtns = document.querySelectorAll('.copy');
+
+    submit.addEventListener('click', () => {
+      const value = num.value;
+      const from = document.querySelector('input[name="from"]:checked').value;
+      let binValue, octValue, decValue, hexValue;
+      switch (from) {
+        case 'bin':
+          binValue = value;
+          octValue = parseInt(value, 2).toString(8);
+          decValue = parseInt(value, 2).toString(10);
+          hexValue = parseInt(value, 2).toString(16);
+          break;
+        case 'oct':
+          binValue = parseInt(value, 8).toString(2);
+          octValue = value;
+          decValue = parseInt(value, 8).toString(10);
+          hexValue = parseInt(value, 8).toString(16);
+          break;
+        case 'dec':
+          binValue = parseInt(value, 10).toString(2);
+          octValue = parseInt(value, 10).toString(8);
+          decValue = value;
+          hexValue = parseInt(value, 10).toString(16);
+          break;
+        case 'hex':
+          binValue = parseInt(value, 16).toString(2);
+          octValue = parseInt(value, 16).toString(8);
+          decValue = parseInt(value, 16).toString(10);
+          hexValue = value;
+          break;
+      }
+      bin.textContent = binValue;
+      oct.textContent = octValue;
+      dec.textContent = decValue;
+      hex.textContent = hexValue; 
+    });
+
+    copyBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const value = btn.previousElementSibling.textContent;
+        navigator.clipboard.writeText(value).then(() => {
+          alert('已复制到剪贴板: ' + value);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+

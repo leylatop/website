@@ -29,24 +29,17 @@ const config: Config = {
     locales: ['zh-Hans'], 
   },
 
-  presets: [
+  presets: [ 
     [
-      'classic',
+      '@docusaurus/preset-classic',
       {
-        API: {
-          // Add custom fields here
-          sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
         docs: {
           sidebarPath: './sidebars.ts',
+          editLocalizedFiles: false, // 不显示编辑按钮
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // editUrl:
+          //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
@@ -66,8 +59,69 @@ const config: Config = {
         theme: {
           customCss: './src/css/custom.css',
         },
+        sitemap: {
+          lastmod: 'date',
+          changefreq: 'weekly',
+          priority: 0.5,
+          ignorePatterns: ['/tags/**'],
+          filename: 'sitemap.xml',
+          createSitemapItems: async (params) => {
+            const {defaultCreateSitemapItems, ...rest} = params;
+            const items = await defaultCreateSitemapItems(rest);
+            return items.filter((item) => !item.url.includes('/page/'));
+          },
+        },
+        // docs: {
+				// 	sidebarPath: require.resolve('./sidebars.js'),
+				// 	sidebarCollapsible: true,
+				// },
+				// gtag: {
+				// 	trackingID: 'GTM-P5GG5DH',
+				// 	anonymizeIP: true,
+				// },
+				// theme: {
+				// 	customCss: [
+				// 		require.resolve('./src/theme/styles.css'),
+				// 		require.resolve('@infinum/docusaurus-theme/dist/style.css'),
+				// 	],
+				// },
+				// blog: {
+				// 	blogTitle: 'Tutorials and articles about Eightshift development kit',
+				// 	blogDescription:
+				// 		'Tutorials and articles about Eightshift development kit',
+				// 	blogSidebarTitle: 'Latest posts',
+				// 	showReadingTime: true,
+				// 	postsPerPage: 9,
+				// },
+				// sitemap: {
+				// 	changefreq: 'weekly',
+				// 	priority: 0.5,
+				// },
       } satisfies Preset.Options,
     ],
+  ],
+
+  // themes: [['docusaurus-theme-awesome', {hello: 'world'}]],
+
+  plugins: [
+    // [
+    //   '@docusaurus/plugin-content-docs',
+    //   {
+    //     id: 'forms',
+    //     path: 'forms',
+    //     routeBasePath: 'forms',
+    //     sidebarPath: './sidebars-forms.ts',
+    //   },
+    // ],
+    // [
+    //   '@docusaurus/plugin-content-docs',
+    //   {
+    //     id: 'about',
+    //     path: 'about',
+    //     routeBasePath: 'about',
+    //     sidebarPath: './sidebars-about.ts',
+    //   },
+    // ],
   ],
 
   themeConfig: {
@@ -81,12 +135,75 @@ const config: Config = {
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Tutorial',
-        },
-        {to: '/blog', label: 'Blog', position: 'left'},
+					to: 'docs/welcome',
+					activeBasePath: 'docs',
+					label: '📓 笔记',
+					position: 'right',
+				},
+        // {
+				// 	to: 'forms/welcome',
+				// 	activeBasePath: 'forms',
+				// 	label: 'Forms',
+				// 	position: 'right',
+				// },
+        {
+					// to: 'markdown-page', // 可以是tsx，也可以是mdx
+          to: 'tool',
+					activeBasePath: 'tool',
+					label: '🔨 工具',
+					position: 'right',
+				},
+				// {
+				// 	to: '/components/welcome',
+				// 	activeBasePath: 'components',
+				// 	label: 'Components',
+				// 	position: 'right',
+				// },
+				// {
+				// 	to: 'forms/welcome',
+				// 	activeBasePath: 'forms',
+				// 	label: 'Forms',
+				// 	position: 'right',
+				// },
+        {
+					to: '/blog',
+					activeBasePath: 'blog',
+					label: '📝 博客',
+					position: 'right',
+				},
+        {
+					// to: 'markdown-page', // 可以是tsx，也可以是mdx
+          to: 'about',
+					activeBasePath: 'about',
+					label: '🧙 关于',
+					position: 'right',
+				},
+				// {
+				// 	to: '/components/welcome',
+				// 	activeBasePath: 'components',
+				// 	label: 'Components',
+				// 	position: 'right',
+				// },
+				// {
+				// 	to: '/playground/',
+				// 	activeBasePath: 'playground',
+				// 	label: 'Playground',
+				// 	position: 'right',
+				// },
+				
+				// {
+				// 	to: '/showcase',
+				// 	activeBasePath: 'showcase',
+				// 	label: 'Showcase',
+				// 	position: 'right',
+				// },
+        // {
+        //   type: 'docSidebar',
+        //   sidebarId: 'tutorialSidebar',
+        //   position: 'left',
+        //   label: 'Tutorial',
+        // },
+        // {to: '/blog', label: 'Blog', position: 'left'},
         // {
         //   href: 'https://github.com/facebook/docusaurus',
         //   label: 'GitHub',
@@ -153,32 +270,17 @@ const config: Config = {
         },
       ]
     },
+    docs: {
+			sidebar: {
+				autoCollapseCategories: false,
+			},
+		},
     prism: { // 代码块主题
       theme: prismThemes.gruvboxMaterialDark,
       darkTheme: prismThemes.dracula,
+      // additionalLanguages: ['php', 'scss', 'css'],
     },
   } satisfies Preset.ThemeConfig,
 };
 
 export default config;
-
-// theme$j as dracula,
-//     theme$i as duotoneDark,
-//     theme$h as duotoneLight,
-//     theme$g as github,
-//     theme$1 as gruvboxMaterialDark,
-//     theme as gruvboxMaterialLight,
-//     theme$5 as jettwaveDark,
-//     theme$4 as jettwaveLight,
-//     theme$f as nightOwl,
-//     theme$e as nightOwlLight,
-//     theme$d as oceanicNext,
-//     theme$c as okaidia,
-//     theme$3 as oneDark,
-//     theme$2 as oneLight,
-//     theme$b as palenight,
-//     theme$a as shadesOfPurple,
-//     theme$9 as synthwave84,
-//     theme$8 as ultramin,
-//     theme$7 as vsDark,
-//     theme$6 as vsLight,
