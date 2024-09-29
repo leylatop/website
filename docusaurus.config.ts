@@ -36,6 +36,9 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editLocalizedFiles: false, // 不显示编辑按钮
+          include: ['📓 学习笔记/show/**', 'welcome.md'],
+          
+          // include: ['**/*.mdx'],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           // editUrl:
