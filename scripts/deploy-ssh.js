@@ -111,8 +111,13 @@ async function uploadDir(sftp, localDir, remoteDir, logStream) {
         skipBar.update(skippedFiles, { filename: colors.yellow('Skipped  ') });
       }
     } catch (err) {
-      // 文件不存在，上传
-      await sftp.put(file.path, remoteFile);
+      try {
+        await sftp.put(file.path, remoteFile);
+      } catch (err) {
+        // 文件不存在，尝试创建目录
+        await sftp.mkdir(path.dirname(remoteFile), true);
+        await sftp.put(file.path, remoteFile);
+      }
       log(colors.green(`上传: ${relativePath} (${formatFileSize(file.size)})`), logStream);
       uploadedFiles++;
       uploadBar.update(uploadedFiles, { filename: colors.green('Uploading') });
