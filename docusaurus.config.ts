@@ -42,14 +42,7 @@ const config: Config = {
           editLocalizedFiles: false, // 不显示编辑按钮
           include: ['📓 学习笔记/**', '🤦 Remind me.md'],
           // 排除非md文件
-          exclude: ['**/*.pdf', '**/*.xmind'],
-          
-          
-          // include: ['**/*.mdx'],
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-          //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          exclude: ['**/*.pdf', '**/*.xmind', '**/*.jpg', '**/asset/**']
         },
         blog: {
           showReadingTime: true,
@@ -58,15 +51,9 @@ const config: Config = {
             xslt: true,
           },
           editLocalizedFiles: false, // 不显示编辑按钮
-          onUntruncatedBlogPosts: 'ignore',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-          //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
+          onUntruncatedBlogPosts: 'ignore'
         },
         theme: {
           customCss: './src/css/custom.css',
