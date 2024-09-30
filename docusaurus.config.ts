@@ -36,7 +36,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editLocalizedFiles: false, // 不显示编辑按钮
-          include: ['📓 学习笔记/show/**', 'welcome.md'],
+          include: ['📓 学习笔记/show/**', '🤦 Remind me.md'],
           
           // include: ['**/*.mdx'],
           // Please change this to your repo.
@@ -138,7 +138,7 @@ const config: Config = {
       },
       items: [
         {
-					to: 'docs/welcome',
+					to: 'docs/🤦 Remind me',
 					activeBasePath: 'docs',
 					label: '📓 笔记',
 					position: 'right',
