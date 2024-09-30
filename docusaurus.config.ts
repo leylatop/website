@@ -42,7 +42,7 @@ const config: Config = {
           editLocalizedFiles: false, // 不显示编辑按钮
           include: ['📓 学习笔记/**', '🤦 Remind me.md'],
           // 排除非md文件
-          exclude: ['**/*.xmind'],
+          exclude: ['**/*.pdf', '**/*.xmind'],
           
           
           // include: ['**/*.mdx'],
