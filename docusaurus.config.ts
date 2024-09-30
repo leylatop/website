@@ -29,6 +29,10 @@ const config: Config = {
     locales: ['zh-Hans'], 
   },
 
+  markdown: {
+    format: 'md',
+  },
+
   presets: [ 
     [
       '@docusaurus/preset-classic',
@@ -36,7 +40,10 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editLocalizedFiles: false, // 不显示编辑按钮
-          include: ['📓 学习笔记/show/**', '🤦 Remind me.md'],
+          include: ['📓 学习笔记/**', '🤦 Remind me.md'],
+          // 排除非md文件
+          exclude: ['**/*.xmind'],
+          
           
           // include: ['**/*.mdx'],
           // Please change this to your repo.
@@ -51,6 +58,7 @@ const config: Config = {
             xslt: true,
           },
           editLocalizedFiles: false, // 不显示编辑按钮
+          onUntruncatedBlogPosts: 'ignore',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           // editUrl:
