@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css</title>
+  <style>
+    .head {
+      fill: #cd803d;
+    }
+
+    .limb {
+      stroke: #cd803d;
+      stroke-width: 35px;
+      stroke-linecap: round;
+    }
+
+    .mouth {
+      fill: none;
+      stroke: white;
+      stroke-width: 2px;
+    }
+
+    .eye {
+      fill: white;
+    }
+
+    .button {
+      fill: white;
+    }
+  </style>
+</head>
+<body>
+  <h4>1. head</h4>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <circle class="head" cx="0" cy="-50" r="30" /> 
+  </svg>
+  <h4>2. limb</h4>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <line class="limb" x1="-40" y1="-10" x2="40" y2="-10" />
+    <line class="limb" x1="-25" y1="50" x2="0" y2="-15" />
+    <line class="limb" x1="25" y1="50" x2="0" y2="-15" />
+  </svg>
+  <h4>3.mouth</h4>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <circle class="head" cx="0" cy="-50" r="30" />
+
+    <rect class="mouth" width="20" height="5" x="-10" y="-40" rx="2"/>
+  </svg>
+  <h4>4. eye</h4>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <circle class="head" cx="0" cy="-50" r="30" />
+    <circle class="eye" r="3" cx="-12"  cy="-55"/>
+    <circle class="eye" r="3" cx="12"  cy="-55"/>
+  </svg>
+
+  <h4>5.button</h4>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <line class="limb" x1="-40" y1="-10" x2="40" y2="-10" />
+    <line class="limb" x1="-25" y1="50" x2="0" y2="-15" />
+    <line class="limb" x1="25" y1="50" x2="0" y2="-15" />
+
+    <circle class="button" r="5" cx="0" cy="-10" />
+    <circle class="button" r="5" cx="0" cy="10" />
+  </svg>
+
+  <h4>5. final</h4>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <circle class="head" cx="0" cy="-50" r="30" />
+
+    <circle class="eye" r="3" cx="-12"  cy="-55"/>
+    <circle class="eye" r="3" cx="12"  cy="-55"/>
+    <rect class="mouth" width="20" height="5" x="-10" y="-40" rx="2"/>
+
+    <line class="limb" x1="-40" y1="-10" x2="40" y2="-10" />
+    <line class="limb" x1="-25" y1="50" x2="0" y2="-15" />
+    <line class="limb" x1="25" y1="50" x2="0" y2="-15" />
+
+    <circle class="button" r="5" cx="0" cy="-10" />
+    <circle class="button" r="5" cx="0" cy="10" />
+  </svg>
+</body>
+</html>

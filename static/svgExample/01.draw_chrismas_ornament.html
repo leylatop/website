@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>circle and rect</title>
+</head>
+<body>
+  <div>最普通的例子</div>
+  <svg width="200" height="200" viewBox="0 0 200 200">
+    <circle cx="100" cy="100" r="50" fill="pink" />
+  </svg>
+  
+  <hr>
+  <div>如果 viewBox 定义的大小与宽度和高度属性不匹配，那么图片就会放大或缩小。</div>
+  <ol>
+    <li>1. 当viewBox的宽高大于svg的宽高时，图片会缩小</li>
+    <li>2. 当viewBox的宽高小于svg的宽高时，图片会放大</li>
+  </ol>
+  <svg width="100" height="100" viewBox="0 0 200 200">
+    <circle cx="100" cy="100" r="50" fill="red" />
+  </svg>
+  <svg width="200" height="200" viewBox="0 0 400 400">
+    <circle cx="100" cy="100" r="50" fill="black" />
+  </svg>
+  <svg width="200" height="200" viewBox="0 0 100 100">
+    <circle cx="100" cy="100" r="50" fill="black" />
+  </svg>
+  <hr>
+  <div>设置图像左上角的坐标为负值</div>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <circle cx="0" cy="0" r="50" fill="green" />
+  </svg>
+  <hr>
+  <div>绘制一个灯笼</div>
+  <h4>1. draw a circle, and it locate the canvas center</h4>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <circle cx="0" cy="20" r="70" fill="#D1495B"/>
+  </svg>
+
+  <h4>2. draw a rect, and it locate the top</h4>
+  <div>
+    rect x,y is left and top
+    <br>
+    rect x = circle'cx - rect'width / 2
+    <br>
+    rect y = circle'cy  - rect'r  - rect'height + 5(for beautiful)
+  </div>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <circle cx="0" cy="20" r="70" fill="#D1495B"/>
+    <rect width="35" height="20" fill="#F79257" x="-17.5" y="-65" />
+  </svg>
+
+  <h4>3. add another circle on top</h4>
+  <div>
+    second circle cx = first circle'cx
+    <br>
+    second circle cy = rect'y - r + 2(for beautiful)
+  </div>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <circle cx="0" cy="20" r="70" fill="#D1495B"/>
+    <rect width="35" height="20" fill="#F79257" x="-17.5" y="-65" />
+    <circle cx="0" cy="-75" r="12" fill="none" stroke="#F79257" stroke-width="2" />
+  </svg>
+</body>
+</html>

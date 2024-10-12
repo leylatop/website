@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h4>
+    1. draw a clock
+    <br>
+    2. stroke-dasharray: 6 17.56194490192345(first value is the length of the dash, second value is the length of the gap)
+    <br>
+    3. stroke-dasharray 用于定义交替的虚线段和间隙的长度。
+    <br />
+    4. stroke-dashoffset: 3(3px offset)
+  </h4>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <rect x="-100" y="-100" width="200" height="200" fill="#CD803D"/>
+
+    <circle r="55" stroke="#FCCE7B" stroke-width="10" fill="white"/>
+    <circle r="45" stroke="#B6705F" stroke-width="6" fill="none"
+    stroke-dasharray="6 17.56194490192345"
+    stroke-dashoffset="3"
+     />
+  </svg>
+
+  <h4>
+    use script get the current time, and draw the clock
+  </h4>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <rect x="-100" y="-100" width="200" height="200" fill="#CD803D"/>
+
+    <circle r="55" stroke="#FCCE7B" stroke-width="10" fill="white"/>
+    <circle r="45" stroke="#B6705F" stroke-width="6" fill="none"
+    stroke-dasharray="6 17.56194490192345"
+    stroke-dashoffset="3"
+     />
+    <g stroke="#5f4c6c" stroke-linecap="round">
+      <line id="hour" y2="-20" stroke-width="8" />
+      <line id="minute" y2="-35" stroke-width="4" />
+    </g>
+  </svg>
+  <script>
+    const hoursElement = document.getElementById('hour');
+    const minutesElement = document.getElementById('minute');
+    
+    const now = new Date();
+    const hours = now.getHours() % 12;
+    const minutes = now.getMinutes();
+
+    hoursElement.setAttribute('transform', `rotate(${hours * (360 / 12)})`);
+    minutesElement.setAttribute('transform', `rotate(${minutes * (360 / 60)})`);
+  </script>
+</body>
+</html>

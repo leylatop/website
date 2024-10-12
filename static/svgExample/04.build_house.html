@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .house {
+      stroke: black;
+      stroke-width: 2px;
+      fill: white;
+    }
+    .roof {
+      fill: none;
+      stroke: #d1495b;
+      stroke-width: 10px;
+      stroke-linecap: round;
+    }
+
+    .door {
+      fill:  #d1495b;
+    }
+    .stair {
+      fill: gray;
+    }
+
+    .window {
+      fill: #fdea96;
+    }
+
+    .window-sill {
+      fill:#d1495b;
+    }
+  </style>
+</head>
+<body>
+  <h4>1. wall</h4>
+  <svg class="house" width="200" height="200" viewBox="-100 -100 200 200">
+    <polygon class="wall" points="-65,80 -65,-10 0,-70 65,-10 65,80" />
+  </svg>
+
+  <h4>2. roof</h4>
+  <svg class="house" width="200" height="200" viewBox="-100 -100 200 200">
+    <polyline class="roof" points="-75,-8 0,-78 75,-8"/>
+  </svg>
+
+  <h4>3. door and windows</h4>
+  <svg class="house" width="200" height="200" viewBox="-100 -100 200 200">
+    <polygon class="wall" points="-65,80 -65,-10 0,-70 65,-10 65,80" />
+    <polyline class="roof" points="-75,-8 0,-78 75,-8"/>
+
+    <!-- door -->
+    <rect class="door" width="30" height="60" x="-45" y="10" rx="2"/>
+    <circle class="door-knob" r="2" cx="-35" cy="40" />
+    <rect class="stair" width="34" height="5" x="-47" y="70"/>
+    <rect class="stair" width="38" height="5" x="-49" y="75"/>
+
+    <!-- window-rect -->
+    <rect class="window" width="40" height="35" x="5" y="15" rx="5"/>
+    <line x1="5" y1="32.5" x2="45" y2="32.5" />
+    <line x1="25" y1="15" x2="25" y2="50" />
+    <rect class="window-sill" width="46" height="5" x="2" y="50" rx="5"/>
+
+    <!-- window-circle -->
+    <circle class="window" cx="0" cy="-25" r="15" />
+    <line x1="0" y1="-40" x2="0" y2="-10" />
+    <line x1="-15" y1="-25" x2="15" y2="-25" />
+  </svg>
+
+  <h4>总结</h4>
+  <ol>
+    <li>circle 元素的cx和cy是圆心的坐标，r是圆的半径</li>
+    <li>rect 元素的x 和 y是矩形左上角的坐标，rx是矩形圆角的大小</li>
+    <li>line 元素的x1y1、x2y2是结对使用的，表示一条直线的起点和终点</li>
+    <li>polygon 元素的points由多个点组成，顺时针连接，一个点由x,y组成，点与点之间由空格隔开，会自动封闭；经常用于画多边形</li>
+    <li>polyline 元素的points由多个点组成，顺时针连接，一个点由x,y组成，点与点之间由空格隔开，不会自动封闭；经常用于画折线</li>
+    <li>css 的 stroke-linecap，可以设置line、polyline两端为圆角</li>
+    <li>css 的 stroke-width，可以设置line、polyline的宽度，xy坐标位于line的中间</li>
+  </ol>
+</body>
+</html>

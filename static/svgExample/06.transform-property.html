@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>transform property</title>
+</head>
+<body>
+  <h4>
+    1. draw an arm
+  </h4>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <polygon points="0,0 36,-50 0,-100" fill="#EDD8B7"/>
+    <polygon points="0,0 -36,-50 0,-100" fill="#E5C39C"/>
+  </svg>
+
+  <h4>
+    2. draw an star with 5 arms, and per arm need rotate 72 degree(transform="rotate(72)")
+  </h4>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <g>
+      <polygon points="0,0 36,-50 0,-100" fill="#EDD8B7"/>
+      <polygon points="0,0 -36,-50 0,-100" fill="#E5C39C"/>
+    </g>
+    <g transform="rotate(72)">
+      <polygon points="0,0 36,-50 0,-100" fill="#EDD8B7"/>
+      <polygon points="0,0 -36,-50 0,-100" fill="#E5C39C"/>
+    </g>
+    <g transform="rotate(144)">
+      <polygon points="0,0 36,-50 0,-100" fill="#EDD8B7"/>
+      <polygon points="0,0 -36,-50 0,-100" fill="#E5C39C"/>
+    </g>
+    <g transform="rotate(-144)">
+      <polygon points="0,0 36,-50 0,-100" fill="#EDD8B7"/>
+      <polygon points="0,0 -36,-50 0,-100" fill="#E5C39C"/>
+    </g>
+    <g transform="rotate(-72)">
+      <polygon points="0,0 36,-50 0,-100" fill="#EDD8B7"/>
+      <polygon points="0,0 -36,-50 0,-100" fill="#E5C39C"/>
+    </g>
+  </svg>
+  <h4>
+    3. for beautiful, move the star down 5px(transform="translate(0 5)")
+  </h4>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <g transform="translate(0 5)">
+      <g>
+        <polygon points="0,0 36,-50 0,-100" fill="#EDD8B7"/>
+        <polygon points="0,0 -36,-50 0,-100" fill="#E5C39C"/>
+      </g>
+      <g transform="rotate(72)">
+        <polygon points="0,0 36,-50 0,-100" fill="#EDD8B7"/>
+        <polygon points="0,0 -36,-50 0,-100" fill="#E5C39C"/>
+      </g>
+      <g transform="rotate(144)">
+        <polygon points="0,0 36,-50 0,-100" fill="#EDD8B7"/>
+        <polygon points="0,0 -36,-50 0,-100" fill="#E5C39C"/>
+      </g>
+      <g transform="rotate(-144)">
+        <polygon points="0,0 36,-50 0,-100" fill="#EDD8B7"/>
+        <polygon points="0,0 -36,-50 0,-100" fill="#E5C39C"/>
+      </g>
+      <g transform="rotate(-72)">
+        <polygon points="0,0 36,-50 0,-100" fill="#EDD8B7"/>
+        <polygon points="0,0 -36,-50 0,-100" fill="#E5C39C"/>
+      </g>
+    </g>
+  </svg>
+</body>
+</html>

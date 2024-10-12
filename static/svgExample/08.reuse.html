@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>reuse element</title>
+</head>
+<body>
+  <div>
+    介绍：使用id 和 use 元素，可以重用元素。
+    <ol>
+      <li>将id 赋给需要被重用的元素</li>
+      <li>使用use 元素，href 属性指向被重用的元素</li>
+      <li>use 元素可以使用transform 属性，对被重用的元素进行变换</li>
+    </ol>
+  </div>
+  <hr>
+  <div>
+    draw a sun
+  </div>
+  <h4>
+    1. draw a circle and a line
+  </h4>
+  <svg width="200" height="200" viewBox="-15 -15 30 30">
+    <circle r="6" />
+    <line 
+      stroke="black"
+      stroke-width="2"
+      stroke-linecap="round"
+      x1="0"
+      y1="11"
+      x2="0"
+      y2="14"
+      />
+  </svg>
+  <h4>
+    2. add id and use, to reuse the line. draw the sun
+  </h4>
+  <svg width="200" height="200" viewBox="-15 -15 30 30">
+    <circle r="6" />
+    <line 
+      id="ray"
+      stroke="black"
+      stroke-width="2"
+      stroke-linecap="round"
+      x1="0"
+      y1="11"
+      x2="0"
+      y2="14"
+      />
+    <use href="#ray" transform="rotate(45)" />
+    <use href="#ray" transform="rotate(90)" />
+    <use href="#ray" transform="rotate(135)" />
+    <use href="#ray" transform="rotate(180)" />
+    <use href="#ray" transform="rotate(225)" />
+    <use href="#ray" transform="rotate(270)" />
+    <use href="#ray" transform="rotate(315)" />
+  </svg>
+  <hr>
+  draw a snowflake
+  <h4>
+    1. draw a branch
+  </h4>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <path
+    d="M 0 0 L 0 -90"
+    stroke="#E5C39C"
+    stroke-width="5"
+    />
+  </svg>
+
+  <h4>
+    2. draw sub branches
+  </h4>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <path
+    d="M 0 0 L 0 -90
+    M 0 -20 L 20 -34
+    M 0 -20 L -20 -34
+    M 0 -40 L 20 -54
+    M 0 -40 L -20 -54
+    M 0 -60 L 20 -74
+    M 0 -60 L -20 -74
+    "
+    stroke="#E5C39C"
+    stroke-width="5"
+    />
+  </svg>
+  <h4>
+    3. add id and use, to reuse the branch. draw the snowflake
+  </h4>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <path
+    id="branch"
+    d="M 0 0 L 0 -90
+    M 0 -20 L 20 -34
+    M 0 -20 L -20 -34
+    M 0 -40 L 20 -54
+    M 0 -40 L -20 -54
+    M 0 -60 L 20 -74
+    M 0 -60 L -20 -74
+    "
+    stroke="#E5C39C"
+    stroke-width="5"
+    />
+    <use href="#branch" transform="rotate(60)" />
+    <use href="#branch" transform="rotate(120)" />
+    <use href="#branch" transform="rotate(180)" />
+    <use href="#branch" transform="rotate(240)" />
+    <use href="#branch" transform="rotate(300)" />
+  </svg>
+</body>
+</html>

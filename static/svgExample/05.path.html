@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h4>Tips</h4>
+  <ol>
+    <li>M命令：move to命令，将光标移动到一个点，但是不划线</li>
+    <li>L命令：line to命令，将光标移动到另一个点，并在上一个点到另一个点之间划线</li>
+  </ol>
+  <h4>1. draw a straight line</h4>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <path d="
+    M -40,-40 L 40,-40" 
+    stroke="#333" 
+    stroke-width="25"
+    stroke-linecap="round" />
+  </svg>
+  <h4>2. draw more lines in a path</h4>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <path d="
+    M -40,-40 L 40,-40
+    M -40,0 L 40,0
+    M -40,40 L 40,40
+    " 
+    stroke="#333" 
+    stroke-width="25"
+    stroke-linecap="round" />
+  </svg>
+
+  <h4>3.heart</h4>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <path
+    d="
+    M -30,-20 
+    L 0,10 
+    L 30,-20"
+    fill="none"
+    stroke="red"
+    stroke-width="80"
+    stroke-linecap="round"/>
+  </svg>
+
+  <h4>4.v shape</h4>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <path
+    d="
+    M -30,-20 
+    L 0,10 
+    L 30,-20"
+    fill="none"
+    stroke="red"
+    stroke-width="10"
+    stroke-linecap="round"/>
+  </svg>
+
+  <h5>5. full screen icon</h5>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <path
+    d="
+    M -50,-25 L -50,-50 L -25,-50
+    M 25,-50 L 50,-50 L 50,-25
+    M 50,25 L 50,50 L25,50
+    M -25,50 L -50,50 L-50,25
+    "
+    fill="none"
+    stroke="black"
+    stroke-width="10"
+    />
+  </svg>
+  <h6>6. half arrow icon</h6>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <path d="
+    M -70,0
+    L 70,0
+    L 30,-50
+    "
+    fill="none"
+    stroke="#D1495B"
+    stroke-width="25"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    />
+    <!-- stroke-linejoin 可以使连接处变圆 -->
+  </svg>
+  <h6>7. arrow icon</h6>
+  <svg width="200" height="200" viewBox="-100 -100 200 200">
+    <path d="
+    M -70,0
+    L 70,0
+    L 30,-50
+    M 70,0
+    L 30 50
+    "
+    fill="none"
+    stroke="#D1495B"
+    stroke-width="25"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    />
+    <!-- stroke-linejoin 可以使连接处变圆 -->
+  </svg>
+</body>
+</html>
