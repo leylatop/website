@@ -246,7 +246,6 @@ async function main() {
     // log('远程zip文件已删除', logStream);
 
     log('部署完成', logStream);
-    sftp.put()
   } catch (err) {
     log(colors.red('发生错误:' + err), logStream);
   } finally {
