@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import Link from '@docusaurus/Link';
+// import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
+// import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
@@ -35,15 +35,15 @@ export default function Home(): JSX.Element {
       title={`Hello from ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />">  
       {/* <HomepageHeader /> */}
-      <main>
-      <h1>欢迎来到LeylaTop的小窝</h1>
-      <div className="proverb">
-        要把大象装冰箱，总共分几步？<br />
-        三步：<br />
-        第一步，把冰箱门打开；<br />
-        第二步，把大象装进去；<br />
-        第三步，把冰箱门盖上。<br />   
-      </div>
+      <main className={clsx(styles.homeMain)}>
+        <h1>欢迎来到LeylaTop的小窝</h1>
+        <div className="proverb">
+          要把大象装冰箱，总共分几步？<br />
+          三步：<br />
+          第一步，把冰箱门打开；<br />
+          第二步，把大象装进去；<br />
+          第三步，把冰箱门盖上。<br />   
+        </div>
       </main>
     </Layout>
   );
