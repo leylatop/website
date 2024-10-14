@@ -271,7 +271,8 @@ const config: Config = {
     },
     docs: {
 			sidebar: {
-				autoCollapseCategories: false,
+				autoCollapseCategories: false, // 是否自动折叠侧边栏
+        hideable: true, // 是否可以隐藏侧边栏
 			},
 		},
     prism: { // 代码块主题
