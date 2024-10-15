@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>英语单词听力练习</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 30px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    button {
+      margin: 10px 0;
+      padding: 5px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    #translation,
+    #count {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    .accent-selection {
+      margin: 10px 0;
+    }
+
+    .accent-selection label {
+      margin-right: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>英语听力练习</h1>
+  <div>
+    程序目的：通过反复听英语单词，提高听力水平和记忆单词的能力。
+    <br>
+    功能说明：
+    <ol>
+      <li>输入待朗读的英语、循环次数，选中发音方式，点击播放发音按钮</li>
+      <li>播放发音时，会自动循环播放，每次播放间隔时间为单词长度的100毫秒</li>
+    </ol>
+  </div>
+  <hr>
+  <br>
+  <br>
+  <input type="text" id="word" placeholder="请输入英语" autocomplete="off">
+  
+  <div class="accent-selection">
+    <label>
+      <input type="radio" name="accent" value="US" checked> 美式发音
+    </label>
+    <label>
+      <input type="radio" name="accent" value="GB"> 英式发音
+    </label>
+  </div>
+  <input type="number" id="repetitions" placeholder="请输入循环播放次数">
+
+  <button id="playButton">播放发音</button>
+  <div id="count"></div>
+  <div id="translation"></div>
+
+
+  <script>
+    const wordInput = document.getElementById('word');
+    const repetitionsInput = document.getElementById('repetitions');
+    const playButton = document.getElementById('playButton');
+    const translationDiv = document.getElementById('translation');
+    const countDiv = document.getElementById('count');
+    const accentInputs = document.querySelectorAll('input[name="accent"]');
+
+    let totalCount = 0;
+    let remainingCount = 0;
+    let utterance = null;
+
+    playButton.addEventListener('click', () => {
+      const word = wordInput.value.trim();
+      const repetitions = parseInt(repetitionsInput.value, 10);
+      const selectedAccent = document.querySelector('input[name="accent"]:checked').value;
+
+      if (word && !isNaN(repetitions) && repetitions > 0) {
+        totalCount = repetitions;
+        remainingCount = repetitions;
+        updateCountDisplay();
+
+        utterance = new SpeechSynthesisUtterance(word);
+        utterance.lang = selectedAccent === 'US' ? 'en-US' : 'en-GB';
+
+        playWithInterval();
+        fetchTranslation(word);
+      } else {
+        alert('请输入有效的单词和重复次数');
+      }
+    });
+
+    function playWithInterval() {
+      if (remainingCount > 0) {
+        speechSynthesis.speak(utterance);
+        remainingCount--;
+        updateCountDisplay();
+
+        setTimeout(() => {
+          playWithInterval();
+        }, 1000 + utterance.text.length * 100);
+      }
+    }
+
+    function updateCountDisplay() {
+      countDiv.textContent = `总朗读次数: ${totalCount} / 剩余朗读次数: ${remainingCount}`;
+    }
+
+    async function fetchTranslation(word) {
+      try {
+        const response = await fetch(`https://api.mymemory.translated.net/get?q=${word}&langpair=en|zh-CN`);
+        const data = await response.json();
+        translationDiv.textContent = `中文翻译: ${data.responseData.translatedText}`;
+      } catch (error) {
+        translationDiv.textContent = '无法获取翻译，请稍后再试。';
+        console.error('翻译错误:', error);
+      }
+    }
+  </script>
+</body>
+
+</html>
