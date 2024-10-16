@@ -1,3 +1,7 @@
 [submodule "docs"]
 	path = docs
 	url = git@github.com:leylatop/note.git
+
+[submodule "collection"]
+	path = collection
+	url = git@github.com:leylatop/collection.git

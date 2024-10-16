@@ -46,3 +46,10 @@ If you are using GitHub pages for hosting, this command is a convenient way to b
 git clone
 git submodule update --init
 ```
+
+
+## add the submodule
+```
+# git submodule add <repository> <path>
+git submodule add git@github.com:leylatop/note.git docs
+```
