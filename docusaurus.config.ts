@@ -40,7 +40,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editLocalizedFiles: false, // 不显示编辑按钮
-          include: ['📓 学习笔记/**', '🤦 Remind me.md'],
+          include: ['⌨️ 开发笔记/**', '📓 英语积累/**', '🤦 Remind me.md'],
           // 排除非md文件
           exclude: ['**/*.pdf', '**/*.xmind', '**/*.jpg', '**/asset/**']
         },
