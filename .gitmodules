@@ -1,6 +1,6 @@
-[submodule "collection"]
-	path = collection
-	url = git@github.com:leylatop/collection.git
 [submodule "docs"]
 	path = docs
+	url = git@github.com:leylatop/website-note.git
+[submodule "docs2"]
+	path = docs2
 	url = git@github.com:leylatop/website-note.git
